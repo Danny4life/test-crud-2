@@ -1,5 +1,6 @@
 package com.osiki.democrud2.service.impl;
 
+import com.osiki.democrud2.controller.UserController;
 import com.osiki.democrud2.entity.UserEntity;
 import com.osiki.democrud2.model.UserModel;
 import com.osiki.democrud2.repository.UserRepository;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
     public UserModel registerUser(UserModel userModel) {
         UserEntity userEntity = new UserEntity();
@@ -35,6 +37,7 @@ public class UserServiceImpl implements UserService {
         List<UserModel> userModels = userEntities
                 .stream()
                 .map(users -> new UserModel(
+
                         users.getFirstname(),
                         users.getLastname(),
                         users.getEmail()

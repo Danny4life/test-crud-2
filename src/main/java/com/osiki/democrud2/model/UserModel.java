@@ -9,7 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserModel {
 
+
     private String firstname;
     private String lastname;
     private String email;
+
+
 }

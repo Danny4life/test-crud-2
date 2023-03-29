@@ -1,7 +1,10 @@
 package com.osiki.democrud2.controller;
 
 import com.osiki.democrud2.model.UserModel;
+import com.osiki.democrud2.repository.UserRepository;
 import com.osiki.democrud2.service.UserService;
+import com.osiki.democrud2.service.impl.UserServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     @PostMapping("/register")
     public ResponseEntity<UserModel> registerUser(@RequestBody UserModel userModel){

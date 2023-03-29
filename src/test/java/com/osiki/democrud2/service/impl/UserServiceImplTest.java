@@ -1,5 +1,6 @@
 package com.osiki.democrud2.service.impl;
 
+import com.osiki.democrud2.controller.UserController;
 import com.osiki.democrud2.entity.UserEntity;
 import com.osiki.democrud2.model.UserModel;
 import com.osiki.democrud2.repository.UserRepository;
@@ -7,19 +8,18 @@ import com.osiki.democrud2.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -29,11 +29,13 @@ class UserServiceImplTest {
 
     @Mock
     private UserRepository userRepository;
+
     private UserServiceImpl underTest;
 
     @BeforeEach
     void setUp() {
         underTest = new UserServiceImpl(userRepository);
+
     }
 
 
@@ -88,7 +90,9 @@ class UserServiceImplTest {
 
     @Test
     @Disabled
-    void getUsersById() {
+    void canGetUsersById() {
+
+        //when
     }
 
     @Test

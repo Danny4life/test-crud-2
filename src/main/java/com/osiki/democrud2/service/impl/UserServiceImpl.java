@@ -5,6 +5,7 @@ import com.osiki.democrud2.model.UserModel;
 import com.osiki.democrud2.repository.UserRepository;
 import com.osiki.democrud2.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
+
 public class UserServiceImpl implements UserService {
 
     @Autowired

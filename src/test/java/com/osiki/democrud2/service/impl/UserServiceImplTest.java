@@ -30,19 +30,12 @@ class UserServiceImplTest {
     @Mock
     private UserRepository userRepository;
 
-    @Mock
-    private UserController userController;
-
     private UserServiceImpl underTest;
 
     @BeforeEach
     void setUp() {
         underTest = new UserServiceImpl(userRepository);
-
     }
-
-
-
 
 
     @Test

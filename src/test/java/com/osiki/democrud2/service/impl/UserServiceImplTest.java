@@ -30,6 +30,9 @@ class UserServiceImplTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private UserController userController;
+
     private UserServiceImpl underTest;
 
     @BeforeEach
@@ -37,6 +40,9 @@ class UserServiceImplTest {
         underTest = new UserServiceImpl(userRepository);
 
     }
+
+
+
 
 
     @Test
@@ -89,10 +95,21 @@ class UserServiceImplTest {
     }
 
     @Test
-    @Disabled
     void canGetUsersById() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(1L);
+        userEntity.setFirstname("John");
+        userEntity.setLastname("Doe");
+        userEntity.setEmail("john@gmail.com");
 
         //when
+        when(userRepository.findById(1L)).thenReturn(Optional.of(userEntity));
+
+        UserModel userModel = underTest.getUsersById(1L);
+
+        UserModel expectedUserModel = new UserModel();
+        BeanUtils.copyProperties(userEntity, expectedUserModel);
+        assertEquals(expectedUserModel, userModel);
     }
 
     @Test

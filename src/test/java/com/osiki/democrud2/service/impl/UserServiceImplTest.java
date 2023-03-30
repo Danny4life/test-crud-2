@@ -113,12 +113,32 @@ class UserServiceImplTest {
     }
 
     @Test
-    @Disabled
     void updateUser() {
+
+        UserModel userModel = new UserModel();
+        userModel.setFirstname("John");
+        userModel.setLastname("Doe");
+        userModel.setEmail("john@gmail.com");
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(1L);
+        userEntity.setFirstname("Jane");
+        userEntity.setLastname("Day");
+        userEntity.setEmail("jane@gmail.com");
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(userEntity));
+        when(userRepository.save(any(UserEntity.class))).thenReturn(userEntity);
+
+        UserModel updatedUserModel = underTest.updateUser(1L, userModel);
+
+        assertEquals(userModel.getFirstname(), updatedUserModel.getFirstname());
+        assertEquals(userModel.getLastname(), updatedUserModel.getLastname());
+        assertEquals(userModel.getEmail(), updatedUserModel.getEmail());
+
     }
 
     @Test
-    @Disabled
+
     void deleteUser() {
     }
 }

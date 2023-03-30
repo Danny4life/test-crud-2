@@ -113,7 +113,7 @@ class UserServiceImplTest {
     }
 
     @Test
-    void updateUser() {
+    void canUpdateUser() {
 
         UserModel userModel = new UserModel();
         userModel.setFirstname("John");
@@ -139,6 +139,11 @@ class UserServiceImplTest {
 
     @Test
 
-    void deleteUser() {
+    void canDeleteUser() {
+        UserEntity user = new UserEntity();
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        boolean result = underTest.deleteUser(1L);
+        verify(userRepository, times(1)).delete(user);
+        Assertions.assertTrue(result);
     }
 }
